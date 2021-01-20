@@ -3,7 +3,6 @@
   $url = isset($_GET['q']) ? trim($_GET['q'], '/') : '';
   $urls = explode('/', $url);
 
-
   $api = $urls[0];
   $api_name = $urls[1];
   $params = array_slice($urls, 2);
