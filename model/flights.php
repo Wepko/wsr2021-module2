@@ -24,8 +24,6 @@
 
     $all_flights = flightsByIata($from_to);
     $flights = [];
-
-    
     
     foreach ($all_flights as $key => $flights_obj) {
       $from = flightsByAirport($flights_obj['from_id']);
@@ -35,7 +33,6 @@
       $to = flightsByAirport($flights_obj['to_id']);
       $to['time'] = $flights_obj['time_to'];
       $to['date'] = Date('d-m-y'); 
-      $dateTime['asdf'] = 'fasd';
 
       $obj_flights['flight_id'] = $flights_obj['flight_id'];
       $obj_flights['flight_code'] = $flights_obj['flight_code'];

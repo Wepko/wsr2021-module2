@@ -7,13 +7,15 @@
   $api_name = $urls[1];
   $params = array_slice($urls, 2);
 
-
-  if (file_exists("api/$api_name.php")) {
-
-    include_once("api/$api_name.php");
+  if (file_exists("$api/$api_name.php")) {
+    include_once("$api/$api_name.php");
     route($method, $params);
-  } else {
-
+  } 
+  elseif($api === 'user') {
+    include_once("api/$api.php");
+    route($method, $params, $api_name);
+  }
+  else {
     header('HTTP/1.1 404 Not Found');
     header('Content-Type: application/json');
     echo json_encode(array(
