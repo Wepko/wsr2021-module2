@@ -3,8 +3,8 @@
 	function dbInstance() {
 		static $db;
 		
-		if($db === null){
-			$db = new PDO('mysql:host=' . 'localhost' . ';dbname=' . 'module2', 'root', 'root', [
+		if($db === null) {
+			$db = new PDO('mysql:host=localhost;dbname=module2', 'root', 'root', [
 				PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 			]);
 			

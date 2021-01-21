@@ -58,6 +58,11 @@
       return true;
     }
 
+    if ($method === 'GET' && count($paramsUrl) > 0) {
+      $code = $paramsUrl;
+      
+    }
+
       // Возвращаем ошибку
     header('HTTP/1.0 404 Not Found');
     header('Content-Type: application/json');
