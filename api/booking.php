@@ -97,7 +97,29 @@
     }
 
     if ($method === 'GET' && count($paramsUrl) === 2 && $paramsUrl[1] === 'seat') {
+      $code = $paramsUrl[0];
+      $booking = bookingCode($code);
       
+      $occupied_from = createPlacePecenger($booking['id'], 'place_from');
+      $occupied_back = createPlacePecenger($booking['id'], 'place_back');
+
+      if (isset($occupied_from) && isset($occupied_back)) {
+        header('HTTP/1.0 200 Ok');
+        header('Content-Type: application/json');
+        $data = [
+          "occupied_from" => $occupied_from,
+          "occupied_back" => $occupied_back
+        ];
+
+        echo json_encode($data);
+      } else  {
+        header('Content-Type: application/json');
+        echo json_encode(array(
+          'error' => 'Error: no corect'
+        ));
+      }
+
+
       return true;
     }
 

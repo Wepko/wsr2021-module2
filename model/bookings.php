@@ -60,3 +60,24 @@
   }
 
 
+  function createPlacePecenger($id, $place) {
+
+    $pessengers = pessengersByBookings($id);
+
+    $occupied = [];
+
+    foreach ($pessengers as $key => $pessenger) {
+      $pessenger_obj = [];
+      if (!is_null($pessenger[$place])) {
+        $pessenger_obj['passenger_id'] = $pessenger['id'];
+        $pessenger_obj['place'] = $pessenger[$place];
+        array_push($occupied, $pessenger_obj);
+      }
+    }
+
+    return $occupied;
+  }
+
+
+
+
